@@ -23,3 +23,4 @@ e = "".join(c)
 f = "".join(d)
 g= list(str(int(e) + int(f)))
 print(a, b, g)
+

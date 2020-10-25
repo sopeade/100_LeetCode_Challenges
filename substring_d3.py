@@ -11,7 +11,7 @@
 
 highest_num = 0
 a = "abdesbcdefart"
-for index, letter_fl in enumerate(a):
+for index, _ in enumerate(a):
     b = []
     for letter_sl in a[index:]:
         if letter_sl not in b:
@@ -21,5 +21,6 @@ for index, letter_fl in enumerate(a):
                 highest_num = len(b)
                 sub_string = b
         else:
+
             break
 print(highest_num, sub_string)
