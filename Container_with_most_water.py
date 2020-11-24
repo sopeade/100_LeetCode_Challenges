@@ -29,22 +29,31 @@ Input: height = [1,2,1]
 Output: 2
 """
 
+from timeit import timeit
+
 a = [1,8,6,2,5,4,8,3,7]
 
 def maxArea(a):
-    b = []
     MaximumArea = 0
+    for start_index, start_num in enumerate(a[:len(a)-1]):
+        higher_end_num = 0
 
-    for end_index, end_num in enumerate(a):
-        print("end_index", end_index)
-        if end_index > 0:
-            for start_index, start_num in enumerate(a[:end_index]):
-                print('end_index', end_index, 'start_index', start_index)
-                area = min(end_num, start_num) * (end_index-start_index)
-                print(area, "area")
+        for end_index, end_num in enumerate(a[::-1]):
+            end_index = (len(a)-1)-end_index
+            if start_num <= end_num:
+                area = (end_index - start_index) * start_num
                 if area > MaximumArea:
                     MaximumArea = area
+
+                break
+            else:
+                if end_num > higher_end_num:
+                    higher_end_num = end_num
+                    area = (end_index - start_index) * min(start_num, end_num)
+                    if area > MaximumArea:
+                        MaximumArea = area
     print(MaximumArea)
     return MaximumArea
+
 
 maxArea(a)
